@@ -11,4 +11,12 @@ book = (
     .get(f"ISBN:{book_ISBN}")
 )
 
-print(book)
+if book:
+    book_title = book.get("title")
+    book_subtitle = f" - {book.get('subtitle')}" if "subtitle" in book else ""
+    book_publish_year = book.get("publish_date")[-4:]
+    book_full_title = f"{book_title}{book_subtitle} ({book_publish_year})".replace(
+        ":", " -"
+    )
+
+    print(book_full_title)
